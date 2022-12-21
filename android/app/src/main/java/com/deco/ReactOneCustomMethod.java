@@ -1,4 +1,4 @@
-package com.alphaapp;
+package com.deco;
 
 
 import android.annotation.SuppressLint;
