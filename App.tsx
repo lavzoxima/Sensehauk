@@ -4,8 +4,17 @@ import {
   Text,
   View,
 } from 'react-native';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
 
 import { heightPercentageToDP } from 'react-native-responsive-screen';
+import { NavigationContainer } from '@react-navigation/native';
+
+// Files
+import { persistor, store } from './src/redux/Store';
+import { NavigationRef } from './src/routers/RouterServices';
+import MainStack from './src/routers/MainStack';
 const App = () => {
 
 
@@ -15,14 +24,15 @@ const App = () => {
 
 
   return (
-    <View style={{ alignItems: 'center', flex: 1, marginTop: 200 }}>
-      <Text>Chat </Text>
-      <Switch
-      /* value={enabled} 
-      onValueChange={setEnabled}  */
-      />
-      <Text style={{ fontSize: 12 }}>{""}</Text>
-    </View>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+
+        <NavigationContainer ref={NavigationRef}>
+
+          <MainStack />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 

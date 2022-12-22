@@ -30,7 +30,7 @@ const MainStack = () => {
       {modalStatus.show ? <CustomSeekBar /> : null}
 
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!auth ? (
+        {auth ? (
           <Stack.Screen name="HomeStack" component={HomeStack} />
         ) : (
           <Stack.Screen name="AuthStack" component={AuthStack} />
